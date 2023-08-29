@@ -12,7 +12,7 @@ def main():
     if st.button("인사"):
         st.write(f"안녕하세요, {name}님!")
     #  csv 파일 업로드
-    uploaded_file = st.file_uploader("파일 선택", type=["csv"])
+    uploaded_file = st.file_uploader("파일 선택", type=["csv","xlsx"])
     if uploaded_file is not None:
          df = pd.read_csv(uploaded_file)
          st.dataframe(df)  # DataFrame 출력 예시

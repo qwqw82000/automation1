@@ -2,8 +2,8 @@ import streamlit as st
 def python_graph(data,whatGraph):
     import plotly.graph_objects as go
     # 데이터 추출
-    topics = list(data["종합평가"].keys())
-    scores = list(data["종합평가"].values())
+    topics = list(data[whatGraph].keys())
+    scores = list(data[whatGraph].values())
     # 색상 설정 함수
     def get_color(score):
         if score > 3:
@@ -31,13 +31,13 @@ def python_evaluation():
     data = {"파이썬":{"입력" : 5 , "출력" : 5, "숫자형" : 5, "문자열" : 5, "리스트": 4, "조건문" : 3, "반복문" : 3, "함수" : 1}}
     st.markdown("<h1 style='text-align: center; color: red;'>학생의 파이썬 이해수준을 평가합니다. 1(부족), 2(정진), 3(보통), 4(실력자), 5(마스터)</h1>", unsafe_allow_html=True)
     data["파이썬"]["입력"] = (radioButton("학생의 파이썬 학습 현황(입력)"))
-    data["파이썬"]["출력"](radioButton("학생의 파이썬 학습 현황(출력)"))
-    data["파이썬"]["숫자형"](radioButton("학생의 파이썬 학습 현황(숫자형)"))
-    data["파이썬"]["문자열"](radioButton("학생의 파이썬 학습 현황(문자열)"))
-    data["파이썬"]["리스트"](radioButton("학생의 파이썬 학습 현황(리스트)"))
-    data["파이썬"]["조건문"](radioButton("학생의 파이썬 학습 현황(조건문)"))
-    data["파이썬"]["반복문"](radioButton("학생의 파이썬 학습 현황(반복문)"))
-    data["파이썬"]["함수"](radioButton("학생의 파이썬 학습 현황(함수)"))
+    data["파이썬"]["출력"] = (radioButton("학생의 파이썬 학습 현황(출력)"))
+    data["파이썬"]["숫자형"] = (radioButton("학생의 파이썬 학습 현황(숫자형)"))
+    data["파이썬"]["문자열"] = (radioButton("학생의 파이썬 학습 현황(문자열)"))
+    data["파이썬"]["리스트"] = (radioButton("학생의 파이썬 학습 현황(리스트)"))
+    data["파이썬"]["조건문"] = (radioButton("학생의 파이썬 학습 현황(조건문)"))
+    data["파이썬"]["반복문"] = (radioButton("학생의 파이썬 학습 현황(반복문)"))
+    data["파이썬"]["함수"] = (radioButton("학생의 파이썬 학습 현황(함수)"))
     return python_graph(data,"파이썬")
     
 def radioButton(word):

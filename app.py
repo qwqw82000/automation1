@@ -11,15 +11,16 @@ def main():
     # 버튼 클릭 이벤트 처리
     if st.button("인사"):
         st.write(f"안녕하세요, {name}님!")
-    #  csv 파일 업로드
-    uploaded_file = st.file_uploader("파일 선택", type=["xlsx"])
-    if uploaded_file is not None:
-     df = pd.read_excel(uploaded_file)
-     st.dataframe(df)  # DataFrame 출력 예시
-     # 여기서부터는 데이터에 대한 추가적인 작업 수행 가능
+    # Radio 버튼 생성
+    option = st.radio("선택하세요", ("옵션 1", "옵션 2", "옵션 3"))
+    
+    # 선택된 옵션에 따라 동작 수행
+    if option == "옵션 1":
+        st.write("옵션 1이 선택되었습니다.")
+    elif option == "옵션 2":
+        st.write("옵션 2가 선택되었습니다.")
     else:
-     st.write("파일이 업로드되지 않았습니다.")
-
+        st.write("옵션 3이 선택되었습니다.")
 
 if __name__ == "__main__":
     main()

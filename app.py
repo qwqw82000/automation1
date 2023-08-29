@@ -1,4 +1,3 @@
-import pandas as pd
 import streamlit as st
 def main():
     st.title("Streamlit 앱")

@@ -13,12 +13,13 @@ def main():
         st.write(f"안녕하세요, {name}님!")
     #  csv 파일 업로드
     uploaded_file = st.file_uploader("파일 선택", type=["xlsx"])
-    if uploaded_file is not None:
+     if uploaded_file is not None:
          df = pd.read_excel(uploaded_file)
          st.dataframe(df)  # DataFrame 출력 예시
          # 여기서부터는 데이터에 대한 추가적인 작업 수행 가능
-    else:
+     else:
          st.write("파일이 업로드되지 않았습니다.")
+
 
 if __name__ == "__main__":
     main()

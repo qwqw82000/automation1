@@ -14,7 +14,7 @@ def main():
     #  csv 파일 업로드
     uploaded_file = st.file_uploader("파일 선택", type=["xlsx"])
     if uploaded_file is not None:
-         df = pd.read_csv(uploaded_file)
+         df = pd.read_excel(uploaded_file)
          st.dataframe(df)  # DataFrame 출력 예시
          # 여기서부터는 데이터에 대한 추가적인 작업 수행 가능
     else:

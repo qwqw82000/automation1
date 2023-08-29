@@ -1,5 +1,4 @@
-import chat_gpt
-openai_api_key = "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" # 키를 수정하세요!
+
 import streamlit as st
 
 def main():

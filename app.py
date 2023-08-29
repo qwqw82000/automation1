@@ -42,20 +42,20 @@ def python_evaluation():
     
 def radioButton(word):
     # Radio 버튼 생성
-    option = st.radio(word, ("1", "2", "3", "4", "5"))
+    option = st.radio(word, (1, 2, 3, 4, 5))
     
     # 선택된 옵션에 따라 동작 수행
-    if option == "1":
+    if option == 1:
         st.write("1점이 선택되었습니다.")
-    elif option == "2":
+    elif option == 2:
         st.write("2점이 선택되었습니다.")
-    elif option == "3":
+    elif option == 3:
         st.write("3점이 선택되었습니다.")
-    elif option == "4":
+    elif option == 4:
         st.write("4점이 선택되었습니다.")
     else:
         st.write("5점이 선택되었습니다.")
-    return int(option)
+    return option
 
 def main():
     st.title("Streamlit 앱")

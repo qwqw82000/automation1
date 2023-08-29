@@ -1,4 +1,4 @@
-
+import pandas as pd
 import streamlit as st
 
 def main():
@@ -11,12 +11,14 @@ def main():
     # 버튼 클릭 이벤트 처리
     if st.button("인사"):
         st.write(f"안녕하세요, {name}님!")
+    #  csv 파일 업로드
+    uploaded_file = st.file_uploader("파일 선택", type=["csv"])
+     if uploaded_file is not None:
+         df = pd.read_csv(uploaded_file)
+         st.dataframe(df)  # DataFrame 출력 예시
+         # 여기서부터는 데이터에 대한 추가적인 작업 수행 가능
+     else:
+         st.write("파일이 업로드되지 않았습니다.")
 
 if __name__ == "__main__":
     main()
-
-# if __name__ == '__main__':    # 프로그램의 시작점일 때만 아래 코드 실행
-    # introduce_prompt = """코딩학원에서 부모님들께 보내는 학생 통지문을 문자로 보낼때 서론 부분을 적어줘"""
-    # generated_text_introduce = chat_gpt.generate_text(introduce_prompt, 'gpt-3.5-turbo',openai_api_key, 2000)# generate_text() 함수를 사용하여 기사 생성
-    # print(generated_text_introduce)
-    

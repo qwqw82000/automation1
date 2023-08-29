@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-import openpyxl
 def main():
     st.title("Streamlit 앱")
     st.write("안녕하세요! 이곳에 내용을 작성할 수 있습니다.")

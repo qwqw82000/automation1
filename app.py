@@ -20,7 +20,7 @@ def main():
     st.write("안녕하세요! 이곳에 내용을 작성할 수 있습니다.")
 
     # 텍스트 입력 받기
-    name = st.text_input("이름 입력", "뤼튼")
+    name = st.text_input("이름 입력", "학생 이름")
 
     # 버튼 클릭 이벤트 처리
     if st.button("확인"):

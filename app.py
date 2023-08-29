@@ -17,7 +17,7 @@ def main():
          df = pd.read_csv(uploaded_file)
          st.dataframe(df)  # DataFrame 출력 예시
          # 여기서부터는 데이터에 대한 추가적인 작업 수행 가능
-     else:
+    else:
          st.write("파일이 업로드되지 않았습니다.")
 
 if __name__ == "__main__":

@@ -7,7 +7,7 @@ def radioButton(word):
     if option == "1":
         st.write("1점이 선택되었습니다.")
     elif option == "2":
-        st.write("2점가 선택되었습니다.")
+        st.write("2점이 선택되었습니다.")
     elif option == "3":
         st.write("3점이 선택되었습니다.")
     elif option == "4":
@@ -26,7 +26,7 @@ def main():
     if st.button("확인"):
         st.write(f"{name}학생에 대한 평가를 시작합니다!")
     # 학생의 파이썬 수준 측정
-    st.write("학생의 파이썬 이해수준을 평가합니다. 1(부족), 2(정진), 3(보통), 4(실력자), 5(마스터)")
+    st.markdown("<h1 style='text-align: center; color: red;'>학생의 파이썬 이해수준을 평가합니다. 1(부족), 2(정진), 3(보통), 4(실력자), 5(마스터)</h1>", unsafe_allow_html=True)
     pythonScore = []
     pythonScore.append(radioButton("학생의 파이썬 학습 현황(입력)"))
     pythonScore.append(radioButton("학생의 파이썬 학습 현황(출력)"))

@@ -6,12 +6,10 @@ def python_graph(data,whatGraph):
     scores = list(data[whatGraph].values())
     # 색상 설정 함수
     def get_color(score):
-        if score > 3:
+        if score >= 3:
             return 'blue'
-        elif score < 3:
-            return 'red'
         else:
-            return 'white'
+            return 'red'
     # 바 그래프 생성
     fig = go.Figure(data=go.Bar(
         x=topics,
@@ -20,26 +18,34 @@ def python_graph(data,whatGraph):
     ))
     # 레이아웃 설정
     fig.update_layout(
-        title=whatGraph,
+        title=f"학생의 {whatGraph}평가(5점만점)",
         xaxis_title="주제",
         yaxis_title="점수",
         font=dict(size=30),
     )
+    # 축 범위 지정
+    fig.update_yaxes(range=[1, 5])
     # 그래프 출력
-    fig.show()
+    st.plotly_chart(fig)
 def python_evaluation():
-    data = {"파이썬":{"입력" : 5 , "출력" : 5, "숫자형" : 5, "문자열" : 5, "리스트": 4, "조건문" : 3, "반복문" : 3, "함수" : 1}}
-    st.markdown("<h1 style='text-align: center; color: red;'>학생의 파이썬 이해수준을 평가합니다. 1(부족), 2(정진), 3(보통), 4(실력자), 5(마스터)</h1>", unsafe_allow_html=True)
-    data["파이썬"]["입력"] = (radioButton("학생의 파이썬 학습 현황(입력)"))
-    data["파이썬"]["출력"] = (radioButton("학생의 파이썬 학습 현황(출력)"))
-    data["파이썬"]["숫자형"] = (radioButton("학생의 파이썬 학습 현황(숫자형)"))
-    data["파이썬"]["문자열"] = (radioButton("학생의 파이썬 학습 현황(문자열)"))
-    data["파이썬"]["리스트"] = (radioButton("학생의 파이썬 학습 현황(리스트)"))
-    data["파이썬"]["조건문"] = (radioButton("학생의 파이썬 학습 현황(조건문)"))
-    data["파이썬"]["반복문"] = (radioButton("학생의 파이썬 학습 현황(반복문)"))
-    data["파이썬"]["함수"] = (radioButton("학생의 파이썬 학습 현황(함수)"))
-    return python_graph(data,"파이썬")
-    
+    data = {"파이썬":{"입력" : 0 , "출력" : 0, "숫자형" : 0, "문자열" : 0, "리스트": 0, "조건문" : 0, "반복문" : 0, "함수" : 0}}
+    st.markdown("<h2 style='text-align: center; color: red;'>학생의 파이썬 이해수준을 평가합니다. 1(부족), 2(정진), 3(보통), 4(실력자), 5(마스터)</h2>", unsafe_allow_html=True)
+    data["파이썬"]["입력"] = (radioButton("1. 학생의 파이썬 학습 현황(입력)"))
+    data["파이썬"]["출력"] = (radioButton("2. 학생의 파이썬 학습 현황(출력)"))
+    data["파이썬"]["숫자형"] = (radioButton("3. 학생의 파이썬 학습 현황(숫자형)"))
+    data["파이썬"]["문자열"] = (radioButton("4. 학생의 파이썬 학습 현황(문자열)"))
+    data["파이썬"]["리스트"] = (radioButton("5. 학생의 파이썬 학습 현황(리스트)"))
+    data["파이썬"]["조건문"] = (radioButton("6. 학생의 파이썬 학습 현황(조건문)"))
+    data["파이썬"]["반복문"] = (radioButton("7. 학생의 파이썬 학습 현황(반복문)"))
+    data["파이썬"]["함수"] = (radioButton("8. 학생의 파이썬 학습 현황(함수)"))
+    if st.button("파이썬 평가 완료"):
+        return python_graph(data,"파이썬")
+        
+def readTxt(codingAcademy,studentName):
+    # 텍스트 파일 열기
+    with open("greeting.txt", "r", encoding="utf-8") as file:
+        content = file.read()
+    return content.format(codingAcademy = codingAcademy, studentName =studentName)
 def radioButton(word):
     # Radio 버튼 생성
     option = st.radio(word, (1, 2, 3, 4, 5))
@@ -58,8 +64,8 @@ def radioButton(word):
     return option
 
 def main():
-    st.title("Streamlit 앱")
-    st.write("안녕하세요! 이곳에 내용을 작성할 수 있습니다.")
+    st.title("학생 평가 앱")
+    st.write("안녕하세요! 다빈치 코딩 학생 평가용 웹입니다!")
 
     # 텍스트 입력 받기
     name = st.text_input("이름 입력", "학생 이름 ")
@@ -68,7 +74,23 @@ def main():
     if st.button("확인"):
         st.write(f"{name}학생에 대한 평가를 시작합니다!")
     # 학생의 파이썬 수준 측정
+
     python_evaluation()
+
+
+
+
+
+    # 버튼 클릭 여부 확인
+    button_clicked = st.button("모든 평가 마치기")
+
+    # 버튼이 클릭되면 새로운 페이지 표시
+    if button_clicked:
+        # 1. 들어가는 인사
+        greeting_txt = readTxt(codingAcademy = "다빈치 코딩학원",studentName = name)
+        st.markdown(greeting_txt)
+        # 2. 코딩 공부 현황
+    
 
     
     

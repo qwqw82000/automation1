@@ -1,6 +1,10 @@
 import streamlit as st
-from studentEvaluation import studentEvaluation, readTxt
+from studentEvaluation import studentEvaluation, readTxt, urlButton
+
 def main():
+    # url 버튼 4개 만들기
+    urlButton()
+    # 웹 화면 시작
     st.title("학생 평가 앱")
     st.write("안녕하세요! 다빈치 코딩 학생 평가용 웹입니다!")
 

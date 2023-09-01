@@ -92,9 +92,21 @@ def studentEvaluation(studentName,string):
     replaceColumnName(targetDf,string)
     # 파이썬 그래프 그리기
     python_graph(studentName,targetDf, whatGraph = string)
-    
+
 def readTxt(codingAcademy,studentName):
     # 텍스트 파일 열기
     with open("greeting.txt", "r", encoding="utf-8") as file:
         content = file.read()
     return content.format(codingAcademy = codingAcademy, studentName =studentName)
+def urlButton():
+    import webbrowser
+    # 버튼 생성
+    button_labels = ['깃허브 연결', '엑셀 공유 시트', 'streamlit cloud','설문 폼']  # 버튼 라벨 리스트
+    buttons = [st.button(label) for label in button_labels]
+    # 각 버튼에 대한 동작 정의
+    urls = ['https://github.com/qwqw82000/automation1', 'https://docs.google.com/spreadsheets/d/1-mDi2Tt_arrQmdtTHR-wlmSo0I-dx5CV0cny9btCD3k/edit#gid=543926080', 'https://streamlit.io/cloud','https://forms.gle/rBwPcdsPYpNXURjj9']
+
+    for i, button in enumerate(buttons):
+        if button:
+            url = urls[i]  # 해당 버튼에 대응하는 URL 가져오기
+            webbrowser.open_new_tab(url)  # 웹 브라우저를 새 탭으로 열어주는 함수 호출

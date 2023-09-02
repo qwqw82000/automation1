@@ -24,7 +24,7 @@ def loadSheet():
 
     # 시트 열기
     worksheet = client.open_by_url(spreadsheet_url).worksheet(worksheet_name)
-    print(worksheet)
+    st.write(worksheet)
     # 데이터 가져오기 (데이터프레임 형태로 반환)
     dataframe = pd.DataFrame(worksheet.get_all_records())
 

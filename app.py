@@ -15,7 +15,7 @@ def main():
     st.write("안녕하세요! 다빈치 코딩 학생 평가용 웹입니다!")
 
     # 텍스트 입력 받기
-    studentName = st.text_input("학생 이름 입력", "김종하")
+    studentName = st.text_input("학생 이름 입력", "유지민")
     # 다중 선택 생성
     stringList = st.multiselect('평가하고자 하는 스택 선택', ['파이썬 기초', 'c언어 기초', '자료구조','태도'])
 

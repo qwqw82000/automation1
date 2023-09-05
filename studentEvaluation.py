@@ -24,9 +24,11 @@ def loadSheet():
 
     # 시트 열기
     worksheet = client.open_by_url(spreadsheet_url).worksheet(worksheet_name)
+
     # 데이터 가져오기 (데이터프레임 형태로 반환)
     dataframe = pd.DataFrame(worksheet.get_all_records())
-
+    
+    
     # 데이터 확인
     dataframe.head()
     return dataframe
@@ -56,7 +58,7 @@ def python_graph(studentName, data,whatGraph):
         font=dict(size=30),
     )
     # 축 범위 지정
-    fig.update_yaxes(range=[1, 5])
+    fig.update_yaxes(range=[0, 5])
     # 그래프 출력
     st.plotly_chart(fig)
     # fig.show()
@@ -67,6 +69,7 @@ def searchStudent(df,name):
 def searchSpecificColumn(df,string):
     # 데이터프레임에서 특정 문자열을 포함하는 열들 가져오기 (예: 'target_string')
     result = df.filter(like=string, axis=1)
+    result = result.replace('', pd.NA).dropna(axis=1)
     return result
 def Preprocessing(df):
     df.replace({'부족': 1, '정진': 2, '보통': 3, '실력자': 4, '마스터': 5}, inplace=True)
@@ -81,14 +84,24 @@ def replaceColumnName(df,string):
 
 def studentEvaluation(studentName,string):
     dataframe = loadSheet()
-    # 부족,정진, 보통, 실력자, 마스터 전처리
-    Preprocessing(dataframe)
     # 학생 찾기
     studentDataframe = searchStudent(dataframe,studentName)
     # 특정 과목 컬럼 찾기
     targetDf = searchSpecificColumn(studentDataframe,string)
+    # 데이터 프레임 내부값이 비어있다면
+    if targetDf.empty:
+        return
+        
     # 컬럼이름 적게 변경
     replaceColumnName(targetDf,string)
+    
+    # 언어 소개 마크다운
+    markDown(studentName,string)
+    
+
+    # 부족,정진, 보통, 실력자, 마스터 전처리
+    Preprocessing(targetDf)
+
     # 파이썬 그래프 그리기
     python_graph(studentName,targetDf, whatGraph = string)
 
@@ -109,3 +122,30 @@ def urlButton():
         if button:
             url = urls[i]  # 해당 버튼에 대응하는 URL 가져오기
             webbrowser.open_new_tab(url)  # 웹 브라우저를 새 탭으로 열어주는 함수 호출
+def redirect_button(url: str, text: str= None, color="#FD504D"):
+    st.markdown(
+    f"""
+    <a href="{url}" target="_blank">
+        <div style="
+            margin: 5px 7px 3px 0px;
+            display: inline-block;
+            padding: 0.5em 1em;
+            color: #FFFFFF;
+            background-color: {color};
+            border-radius: 3px;
+            text-decoration: none;">
+            {text}
+        </div>
+    </a>
+    """,
+    unsafe_allow_html=True
+    )
+def markDown(studentName,string):
+    st.markdown(
+    f"""
+    <ul>
+        <li>{string}</li>
+    </ul>
+    """,
+    unsafe_allow_html=True
+    )

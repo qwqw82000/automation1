@@ -42,7 +42,8 @@ def main():
         for string in stringList:
             studentEvaluation(studentName,string)
         # 담당 선생님 의견
-        df = studentEvaluation(studentName,"담당 선생님 의견")
+        df = loadSheet()
+        df = searchStudent(df,studentName)
         df = df.reset_index()
         st.markdown(
         f"""
@@ -50,9 +51,6 @@ def main():
         """,
         unsafe_allow_html=True
         )
-        if df.empty:
-            st.write("담당 선생님 의견 미작성")
-        else:
-            st.write(df.loc[0, '담당 선생님 의견'])
+        st.write(df.loc[0, '담당 선생님 의견'])
 if __name__ == "__main__":
     main()

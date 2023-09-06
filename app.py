@@ -6,7 +6,7 @@ def main():
     # url 버튼 4개 만들기
     # urlButton()
     redirect_button("https://github.com/qwqw82000/automation1","깃허브 연결")
-    redirect_button("https://docs.google.com/spreadsheets/d/1-mDi2Tt_arrQmdtTHR-wlmSo0I-dx5CV0cny9btCD3k/edit#gid=543926080","엑셀 공유 시트")
+    redirect_button("https://docs.google.com/spreadsheets/d/1dqNCXz-_Ja61498ermgteu01q2adZjElScz4fuCfR9Q","엑셀 공유 시트")
     redirect_button("https://forms.gle/rBwPcdsPYpNXURjj9","설문 폼")
     redirect_button("https://streamlit.io/cloud","streamlit cloud")
 

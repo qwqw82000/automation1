@@ -38,6 +38,7 @@ def main():
         """,
         unsafe_allow_html=True
         )
+        # 과목 순회 종합 평가
         for string in stringList:
             studentEvaluation(studentName,string)
         # 담당 선생님 의견
@@ -50,14 +51,10 @@ def main():
         """,
         unsafe_allow_html=True
         )
-        st.write(df.loc[0, '담당 선생님 의견'])
         if not df['담당 선생님 의견'].empty:
-            st.markdown(
-            f"""
-                {df.loc[0, '담당 선생님 의견']}
-            """,
-            unsafe_allow_html=True
-            )
+            st.write(df.loc[0, '담당 선생님 의견'])
+        else:
+            st.write("담당 선생님 의견 미작성")
     
 if __name__ == "__main__":
     main()

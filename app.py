@@ -44,7 +44,7 @@ def main():
         # 담당 선생님 의견
         df = loadSheet()
         df = searchStudent(df,studentName)
-        df = df.replace('', pd.NA).dropna(axis=1)
+        df = df.replace('', np.nan)
         df = df.reset_index()
         st.markdown(
         f"""

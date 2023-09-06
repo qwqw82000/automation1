@@ -49,6 +49,7 @@ def main():
         """,
         unsafe_allow_html=True
         )
+        st.write(df)
         if not df['담당 선생님 의견'].empty:
             st.markdown(
             f"""

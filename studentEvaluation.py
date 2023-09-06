@@ -89,7 +89,9 @@ def studentEvaluation(studentName,string):
     # 특정 과목 컬럼 찾기
     targetDf = searchSpecificColumn(studentDataframe,string)
     # 데이터 프레임 내부값이 비어있다면
-    if targetDf.empty:
+    if string == "담당 선생님 의견":
+        return targetDf
+    elif targetDf.empty:
         st.write(f"{string}과목 평가 내역 없음")
         return
         

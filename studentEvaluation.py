@@ -90,6 +90,7 @@ def studentEvaluation(studentName,string):
     targetDf = searchSpecificColumn(studentDataframe,string)
     # 데이터 프레임 내부값이 비어있다면
     if targetDf.empty:
+        st.write(f"{string}과목 평가 내역 없음")
         return
         
     # 컬럼이름 적게 변경

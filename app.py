@@ -49,12 +49,12 @@ def main():
         unsafe_allow_html=True
         )
         if not df['담당 선생님 의견'].empty:
-        st.markdown(
-        f"""
-            {df['담당 선생님 의견']}
-        """,
-        unsafe_allow_html=True
-        )
+            st.markdown(
+            f"""
+                {df['담당 선생님 의견']}
+            """,
+            unsafe_allow_html=True
+            )
     
 if __name__ == "__main__":
     main()

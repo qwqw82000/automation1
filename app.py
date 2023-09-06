@@ -53,6 +53,7 @@ def main():
         )
         if not df['담당 선생님 의견'].empty:
             st.write(df.loc[0, '담당 선생님 의견'])
+            st.write(12121212)
         else:
             st.write("담당 선생님 의견 미작성")
     

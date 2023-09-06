@@ -51,11 +51,10 @@ def main():
         """,
         unsafe_allow_html=True
         )
-        if df.loc[0, '담당 선생님 의견'] != '':
+        if df['담당 선생님 의견'].empty:
+            st.write("담당 선생님 의견 미작성")
+        else:
             st.write(df.loc[0, '담당 선생님 의견'])
             st.write(df)
-        else:
-            st.write("담당 선생님 의견 미작성")
-    
 if __name__ == "__main__":
     main()

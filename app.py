@@ -1,5 +1,5 @@
 import streamlit as st
-from studentEvaluation import studentEvaluation, readTxt, urlButton, redirect_button, loadSheet
+from studentEvaluation import studentEvaluation, readTxt, urlButton, redirect_button, loadSheet,searchStudent
 
 def main():
     
@@ -42,6 +42,7 @@ def main():
             studentEvaluation(studentName,string)
         # 담당 선생님 의견
         df = loadSheet()
+        df = searchStudent(df,studentName)
         st.markdown(
         f"""
             <h2 id="-studentname-">다빈치 코딩 {studentName}학생의 담당 선생님 의견</h2>

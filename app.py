@@ -51,7 +51,7 @@ def main():
         """,
         unsafe_allow_html=True
         )
-        if not df['담당 선생님 의견'].empty:
+        if df.loc[0, '담당 선생님 의견'] != '':
             st.write(df.loc[0, '담당 선생님 의견'])
             st.write(df)
         else:

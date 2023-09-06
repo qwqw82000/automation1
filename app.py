@@ -7,11 +7,11 @@ def main():
     # urlButton()
     redirect_button("https://github.com/qwqw82000/automation1","깃허브 연결")
     redirect_button("https://docs.google.com/spreadsheets/d/1dqNCXz-_Ja61498ermgteu01q2adZjElScz4fuCfR9Q","엑셀 공유 시트")
-    redirect_button("https://forms.gle/rBwPcdsPYpNXURjj9","설문 폼")
+    redirect_button("https://forms.gle/rBwPcdsPYpNXURjj9","설문 폼(미평가 학생의 경우)")
     redirect_button("https://streamlit.io/cloud","streamlit cloud")
 
     # 웹 화면 시작
-    st.title("학생 평가 앱")
+    st.title("학생 평가 웹")
     st.write("안녕하세요! 다빈치 코딩 학생 평가용 웹입니다!")
 
     # 텍스트 입력 받기

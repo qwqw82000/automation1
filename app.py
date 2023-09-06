@@ -42,9 +42,7 @@ def main():
         for string in stringList:
             studentEvaluation(studentName,string)
         # 담당 선생님 의견
-        df = loadSheet()
-        df = searchStudent(df,studentName)
-        df = df.replace('', np.nan)
+        df = studentEvaluation(studentName,string)
         df = df.reset_index()
         st.markdown(
         f"""
@@ -52,7 +50,7 @@ def main():
         """,
         unsafe_allow_html=True
         )
-        if df['담당 선생님 의견'].empty:
+        if df.empty:
             st.write("담당 선생님 의견 미작성")
         else:
             st.write(df.loc[0, '담당 선생님 의견'])

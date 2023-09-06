@@ -44,6 +44,7 @@ def main():
         # 담당 선생님 의견
         df = loadSheet()
         df = searchStudent(df,studentName)
+        df = df.replace('', pd.NA).dropna(axis=1)
         df = df.reset_index()
         st.markdown(
         f"""
@@ -55,6 +56,5 @@ def main():
             st.write("담당 선생님 의견 미작성")
         else:
             st.write(df.loc[0, '담당 선생님 의견'])
-            st.write(df)
 if __name__ == "__main__":
     main()

@@ -17,7 +17,7 @@ def loadSheet():
     client = gspread.authorize(credentials)
 
     # 구글 스프레드시트 문서의 URL
-    spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1-mDi2Tt_arrQmdtTHR-wlmSo0I-dx5CV0cny9btCD3k/edit'
+    spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1dqNCXz-_Ja61498ermgteu01q2adZjElScz4fuCfR9Q'
 
     # 시트 이름 (또는 인덱스) 지정 (예: 첫 번째 시트)
     worksheet_name = '설문지 응답 시트1'

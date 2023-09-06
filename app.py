@@ -43,17 +43,18 @@ def main():
         # 담당 선생님 의견
         df = loadSheet()
         df = searchStudent(df,studentName)
+        df = df.reset_index()
         st.markdown(
         f"""
             <h2 id="-studentname-">다빈치 코딩 {studentName}학생의 담당 선생님 의견</h2>
         """,
         unsafe_allow_html=True
         )
-        st.write(df.loc[:, '담당 선생님 의견'])
+        st.write(df.loc[0, '담당 선생님 의견'])
         if not df['담당 선생님 의견'].empty:
             st.markdown(
             f"""
-                {df['담당 선생님 의견']}
+                {df.loc[0, '담당 선생님 의견']}
             """,
             unsafe_allow_html=True
             )

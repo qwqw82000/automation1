@@ -84,10 +84,13 @@ def replaceColumnName(df,string):
 
 def studentEvaluation(studentName,string):
     dataframe = loadSheet()
+    st.write(0)
     # 학생 찾기
     studentDataframe = searchStudent(dataframe,studentName)
+    st.write(1)
     # 특정 과목 컬럼 찾기
     targetDf = searchSpecificColumn(studentDataframe,string)
+    st.write(2)
     # 데이터 프레임 내부값이 비어있다면
     if string == "담당 선생님 의견":
         return targetDf

@@ -42,7 +42,7 @@ def main():
         for string in stringList:
             studentEvaluation(studentName,string)
         # 담당 선생님 의견
-        df = studentEvaluation(studentName,string)
+        df = studentEvaluation(studentName,'담당 선생님 의견')
         df = df.reset_index()
         st.markdown(
         f"""
